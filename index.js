@@ -27,6 +27,7 @@ const INVENTORY = [
  * @returns {number[]} ids of given items
  */
 function getIds(items) {
+  return items.map((item) => item.id);
   // TODO
 }
 
@@ -35,6 +36,8 @@ function getIds(items) {
  * @returns {string[]} categories of given items
  */
 function getCategories(items) {
+ return items.map(function(item) {return item.category;
+  })
   // TODO
 }
 
@@ -48,6 +51,9 @@ function getCategories(items) {
  * @returns {string[]} SKUs of given items
  */
 function getSkus(items) {
+  return items.map((item) => {
+    return item.id + "#" + item.name + "#" + item.name.length;
+  });
   // TODO
 }
 
@@ -56,6 +62,7 @@ function getSkus(items) {
  * @returns {Item[]} all items in the "fruit" category
  */
 function getFruits(items) {
+  return items.filter((item) => item.category === "fruit");
   // TODO
 }
 
@@ -65,7 +72,7 @@ function getFruits(items) {
  * @returns {Item[]} all items in the given category
  */
 function getItemsByCategory(items, category) {
-  // TODO
+  return items.filter((item) => item.category === category);
 }
 
 /**
@@ -74,6 +81,7 @@ function getItemsByCategory(items, category) {
  * @returns {Item[]} all cheap items
  */
 function getCheapItems(items) {
+  return items.filter((item) => item.price <= 2.5);
   // TODO
 }
 
@@ -82,14 +90,18 @@ function getCheapItems(items) {
  * @returns {number} the total quantity of all items given
  */
 function countItems(items) {
-  // TODO
-}
+  for (let i = 0; i < items.length; i++) {
+    total = total + items[i].quantity;
+} // TODO
 
 /**
  * @param {Item[]} items
  * @returns {number} the cost of purchasing every single item
  */
 function getTotalCost(items) {
+let total = 0;
+  for (let i = 0; i < items.length; i++) {
+    total = total + items[i].price;
   // TODO
 }
 
@@ -97,6 +109,11 @@ function getTotalCost(items) {
  * @param {Item[]} items
  * @returns {Item} the item with the highest price
  */
-function getMostExpensiveItem(items) {
+function getMostExpensiveItem
+
+let expensive = items[0];
+  for (let i = 1; i < items.length; i++) {
+    if (items[i].price > expensive.price) {
+      expensive = items[i];
   // TODO
 }
